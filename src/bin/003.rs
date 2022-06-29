@@ -1,16 +1,17 @@
 use proconio::{input, marker::Usize1};
+
 fn main() {
     input! {
         n: usize,
-        e: [(Usize1, Usize1); n - 1],
+        edges: [(Usize1, Usize1); n - 1],
     }
     let mut g = vec![vec![]; n];
-    for (a, b) in e {
+    for (a, b) in edges {
         g[a].push(b);
         g[b].push(a);
     }
     let d = tree_diameter(&g);
-    println!("{}", d + 1)
+    println!("{}", d + 1);
 }
 
 fn tree_diameter(g: &[Vec<usize>]) -> usize {
